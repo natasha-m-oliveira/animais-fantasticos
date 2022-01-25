@@ -1,22 +1,31 @@
-export default function initTabNav() {
-  const tabMenu = document.querySelectorAll('[data-tab="menu"] li');
-  const tabContent = document.querySelectorAll('[data-tab="content"] section');
-
-  function activeTab(index) {
-    tabContent.forEach((section) => {
-      section.classList.remove('ativo');
-    });
-    const direcao = tabContent[index].dataset.anime;
-    tabContent[index].classList.add('ativo', direcao);
+export default class TabNav {
+  constructor(menu, content) {
+    this.menu = document.querySelectorAll(menu);
+    this.content = document.querySelectorAll(content);
+    this.activeClass = 'ativo';
   }
 
-  if (tabMenu.length && tabContent.length) {
-    tabContent[0].classList.add('ativo');
-
-    tabMenu.forEach((itemMenu, index) => {
-      itemMenu.addEventListener('click', () => {
-        activeTab(index);
-      });
+  // Ativa a tab de acordo com o seu index
+  activeTab(index) {
+    this.content.forEach((section) => {
+      section.classList.remove(this.activeClass);
     });
+    const direcao = this.content[index].dataset.anime;
+    this.content[index].classList.add(this.activeClass, direcao);
+  }
+
+  // Adiciona os eventos nas tabs
+  addTabNavEvent() {
+    this.menu.forEach((itemMenu, index) => {
+      itemMenu.addEventListener('click', () => this.activeTab(index));
+    });
+  }
+
+  init() {
+    if (this.menu.length && this.content.length) {
+      // ativar primeiro item
+      this.activeTab(0);
+      this.addTabNavEvent();
+    }
   }
 }
