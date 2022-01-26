@@ -6,12 +6,30 @@
     display: none;
 }
 
-[data-dropdown]:hover .dropdown-menu,
 [data-dropdown].active .dropdown-menu {
     display: block;
     animation: show-up .3s forwards;
 }
 
+[data-dropdown] > a::after {
+  content: '';
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  background: url("../img/down-arrow.svg") center center no-repeat;
+  -webkit-transform: rotate(0deg) scale(0.8);
+  transform: rotate(0deg) scale(0.8);
+  margin-left: 0.625rem;
+  -webkit-transition: .3s;
+  transition: .3s;
+  position: relative;
+  top: -2px;
+}
+
+[data-dropdown].active > a::after {
+  -webkit-transform: rotate(-180deg) scale(0.8);
+  transform: rotate(-180deg) scale(0.8);
+}
 
 @keyframes show-up {
     from {
@@ -26,9 +44,9 @@
 
 .dropdown-menu {
     position: absolute;
-    top: 38px;
+    top: 50px;
     background: #E54;
-    border: 2px solid #333;
+    box-shadow: 0 4px 16px 4px rgb(0 0 0 / 30%);
     z-index: 200;
 }
 
@@ -37,6 +55,7 @@
     display: block;
     position: absolute;
     top: -10px;
+    left: 28px;
     width: 0px;
     height: 0px;
     border-left: 10px solid transparent;
