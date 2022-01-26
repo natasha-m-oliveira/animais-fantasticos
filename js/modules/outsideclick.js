@@ -16,7 +16,7 @@ export default function outsideClick(element, events, callback) {
   // caso já existe o atributo não será disparado um novo evento
   if (!element.hasAttribute(outside)) {
     events.forEach((userEvent) => {
-      html.addEventListener(userEvent, handleOutsideClick);
+      setTimeout(() => html.addEventListener(userEvent, handleOutsideClick));
     });
     element.setAttribute(outside, '');
   }
