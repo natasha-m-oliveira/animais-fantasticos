@@ -49,6 +49,13 @@ body {
     letter-spacing: .1em;
 }
 
+.arrow-black {
+  background: url("../img/arrow-black.svg") center center no-repeat;
+  display: inline-block;
+  width: 8px;
+  height: 10px;
+}
+
 .grid-section {
     grid-column: 2 / 4;
     width: 100%;
@@ -230,12 +237,19 @@ body {
 }
 
 [data-anime="accordion"] dt:after {
-    content: '⬎';
+    content: '';
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: url("../img/arrow-red.svg") center center no-repeat;
     margin-left: 10px;
+    transform: rotate(90deg);
+    transition: transform .3s;
 }
 
 [data-anime="accordion"] dt.ativo:after {
-    content: '⬏';
+    content: '';
+    transform: rotate(-90deg);
 }
 
 [data-anime="accordion"] dd.ativo {
@@ -310,7 +324,7 @@ body {
     }
 
     .grid-section h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .menu {
