@@ -115,9 +115,10 @@ export default class Slider {
   }
 
   onResize() {
-    setInterval(() => {
+    const timer = setInterval(() => {
       this.sliderConfig();
       this.changeSlider(this.index.active);
+      clearInterval(timer);
     }, 1000);
   }
 
