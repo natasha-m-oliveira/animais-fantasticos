@@ -49,7 +49,7 @@ body {
     letter-spacing: .1em;
 }
 
-.arrow-black {
+[data-modal="abrir"] .arrow-black {
   background: url("../img/arrow-black.svg") center center no-repeat;
   display: inline-block;
   width: 8px;
